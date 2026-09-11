@@ -33,25 +33,25 @@ export class AssetLoader {
     }
 
     const audioList = [
-      { key: 'hero_slash1', path: '/assets/audio/hero_slash1.wav' },
-      { key: 'hero_slash2', path: '/assets/audio/hero_slash2.wav' },
-      { key: 'hero_lunge', path: '/assets/audio/hero_lunge.wav' },
-      { key: 'hero_slam', path: '/assets/audio/hero_slam.wav' },
-      { key: 'hero_hurt', path: '/assets/audio/hero_hurt.wav' },
-      { key: 'hero_defeat', path: '/assets/audio/hero_defeat.wav' },
-      { key: 'hero_respawn', path: '/assets/audio/hero_respawn.wav' },
-      { key: 'life_lost', path: '/assets/audio/life_lost.wav' },
-      { key: 'swarmer_swing', path: '/assets/audio/swarmer_swing.wav' },
-      { key: 'swarmer_hurt', path: '/assets/audio/swarmer_hurt.wav' },
-      { key: 'swarmer_dead', path: '/assets/audio/swarmer_dead.wav' },
-      { key: 'archer_shoot', path: '/assets/audio/archer_shoot.wav' },
-      { key: 'arrow_hit', path: '/assets/audio/arrow_hit.wav' },
-      { key: 'boss_charge', path: '/assets/audio/boss_charge.wav' },
-      { key: 'boss_slam', path: '/assets/audio/boss_slam.wav' },
-      { key: 'boss_hurt', path: '/assets/audio/boss_hurt.wav' },
-      { key: 'boss_defeat', path: '/assets/audio/boss_defeat.wav' },
-      { key: 'ui_click', path: '/assets/audio/ui_click.wav' },
-      { key: 'game_over', path: '/assets/audio/game_over.wav' }
+      { key: 'hero_slash1', path: './assets/audio/hero_slash1.wav' },
+      { key: 'hero_slash2', path: './assets/audio/hero_slash2.wav' },
+      { key: 'hero_lunge', path: './assets/audio/hero_lunge.wav' },
+      { key: 'hero_slam', path: './assets/audio/hero_slam.wav' },
+      { key: 'hero_hurt', path: './assets/audio/hero_hurt.wav' },
+      { key: 'hero_defeat', path: './assets/audio/hero_defeat.wav' },
+      { key: 'hero_respawn', path: './assets/audio/hero_respawn.wav' },
+      { key: 'life_lost', path: './assets/audio/life_lost.wav' },
+      { key: 'swarmer_swing', path: './assets/audio/swarmer_swing.wav' },
+      { key: 'swarmer_hurt', path: './assets/audio/swarmer_hurt.wav' },
+      { key: 'swarmer_dead', path: './assets/audio/swarmer_dead.wav' },
+      { key: 'archer_shoot', path: './assets/audio/archer_shoot.wav' },
+      { key: 'arrow_hit', path: './assets/audio/arrow_hit.wav' },
+      { key: 'boss_charge', path: './assets/audio/boss_charge.wav' },
+      { key: 'boss_slam', path: './assets/audio/boss_slam.wav' },
+      { key: 'boss_hurt', path: './assets/audio/boss_hurt.wav' },
+      { key: 'boss_defeat', path: './assets/audio/boss_defeat.wav' },
+      { key: 'ui_click', path: './assets/audio/ui_click.wav' },
+      { key: 'game_over', path: './assets/audio/game_over.wav' }
     ];
 
     const totalAssets = imageList.length + audioList.length;

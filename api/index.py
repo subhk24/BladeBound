@@ -59,17 +59,23 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 public_dir = os.path.join(BASE_DIR, "public")
 src_dir = os.path.join(BASE_DIR, "src")
 
+assets_dir = os.path.join(BASE_DIR, "assets") if os.path.exists(os.path.join(BASE_DIR, "assets")) else os.path.join(public_dir, "assets")
+css_dir = os.path.join(BASE_DIR, "css") if os.path.exists(os.path.join(BASE_DIR, "css")) else os.path.join(public_dir, "css")
+index_file = os.path.join(BASE_DIR, "index.html") if os.path.exists(os.path.join(BASE_DIR, "index.html")) else os.path.join(public_dir, "index.html")
+
 if os.path.exists(src_dir):
     app.mount("/src", StaticFiles(directory=src_dir), name="src")
 
-if os.path.exists(public_dir):
-    app.mount("/assets", StaticFiles(directory=os.path.join(public_dir, "assets")), name="assets")
-    app.mount("/css", StaticFiles(directory=os.path.join(public_dir, "css")), name="css")
+if os.path.exists(assets_dir):
+    app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
 
-    @app.get("/")
-    def serve_index():
-        return FileResponse(os.path.join(public_dir, "index.html"))
+if os.path.exists(css_dir):
+    app.mount("/css", StaticFiles(directory=css_dir), name="css")
 
-    @app.get("/index.html")
-    def serve_index_html():
-        return FileResponse(os.path.join(public_dir, "index.html"))
+@app.get("/")
+def serve_index():
+    return FileResponse(index_file)
+
+@app.get("/index.html")
+def serve_index_html():
+    return FileResponse(index_file)
