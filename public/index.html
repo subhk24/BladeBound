@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>BladeBound: 5 Lives Arena</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="gameWrapper">
+    <canvas id="gameCanvas"></canvas>
+    <div class="crt-overlay"></div>
+
+    <button id="audioToggleBtn" title="Toggle Sound">🔊</button>
+
+    <!-- 1. Preloader Screen -->
+    <div id="loadingOverlay" class="modal-overlay">
+      <div class="loading-box">
+        <h1 class="game-title">BLADEBOUND</h1>
+        <div class="game-subtitle">5 LIVES ARENA</div>
+        <div class="loading-bar-frame">
+          <div id="loadingProgress" class="loading-bar-fill"></div>
+        </div>
+        <div id="loadingText" class="loading-text">PREPARING ARENA ASSETS...</div>
+      </div>
+    </div>
+
+    <!-- 2. Start Screen Modal -->
+    <div id="startModal" class="modal-overlay hidden">
+      <div class="modal-box">
+        <h1 class="game-title">BLADEBOUND</h1>
+        <div class="game-subtitle">⚡ 5 LIVES COMBAT ARENA ⚡</div>
+
+        <div class="selection-title">CHOOSE YOUR CHAMPION</div>
+        <div class="character-picker">
+          <div class="char-card selected" data-character="hero_female">
+            <div class="char-avatar">
+              <img src="/assets/sprites/hero_female/idle_1.png?v=3" alt="Female Rogue">
+            </div>
+            <div class="char-name">VALKYRIE ROGUE</div>
+            <div class="char-desc">Dual-Dagger specialist. Swift 3-phase flurry and agility.</div>
+          </div>
+          <div class="char-card" data-character="hero_male">
+            <div class="char-avatar">
+              <img src="/assets/sprites/hero_male/idle_1.png?v=3" alt="Male Knight">
+            </div>
+            <div class="char-name">IRON KNIGHT</div>
+            <div class="char-desc">Sword & Shield warrior. Sturdy strikes and forward momentum.</div>
+          </div>
+        </div>
+
+        <div class="difficulty-selector">
+          <div class="selection-title">SELECT DIFFICULTY</div>
+          <div class="diff-buttons">
+            <button class="diff-btn" data-diff="easy">EASY</button>
+            <button class="diff-btn active" data-diff="medium">MEDIUM</button>
+            <button class="diff-btn" data-diff="hard">HARD</button>
+          </div>
+        </div>
+
+        <div class="high-score-banner">
+          🏆 PERSONAL BEST: <span id="startHighScore">0</span>
+        </div>
+
+        <div class="modal-actions">
+          <button id="startBtn" class="arcade-btn">ENTER ARENA</button>
+          <button id="openHelpBtn" class="arcade-btn secondary-btn">📖 HOW TO PLAY</button>
+        </div>
+
+        <div class="controls-guide">
+          <span>A</span> / <span>D</span> Move &nbsp;|&nbsp; 
+          <span>J</span> Attack (3-Phase Combo) &nbsp;|&nbsp; 
+          <span>K</span> Dodge Roll &nbsp;|&nbsp; 
+          <span>P</span> Pause / Menu
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Pause Modal -->
+    <div id="pauseModal" class="modal-overlay hidden">
+      <div class="modal-box">
+        <h2 class="game-title" style="font-size: 32px;">BATTLE PAUSED</h2>
+        <div class="modal-actions" style="flex-direction: column; max-width: 260px; margin: 24px auto;">
+          <button id="resumeBtn" class="arcade-btn">RESUME BATTLE</button>
+          <button id="pauseHelpBtn" class="arcade-btn secondary-btn">📖 HOW TO PLAY</button>
+          <button id="pauseQuitBtn" class="arcade-btn quit-btn">QUIT TO MENU</button>
+        </div>
+        <div class="controls-guide">Press <span>P</span> or <span>ESC</span> to resume</div>
+      </div>
+    </div>
+
+    <!-- 4. Game Over Modal -->
+    <div id="gameOverModal" class="modal-overlay hidden">
+      <div class="modal-box">
+        <h1 class="game-title" style="color: #ff2a4b;">ALL 5 LIVES LOST</h1>
+        <div id="newBestBanner" class="new-best-banner hidden">⭐ NEW PERSONAL BEST! ⭐</div>
+        <div class="game-subtitle">YOU HAVE FALLEN IN THE ARENA</div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-label">FINAL SCORE</span>
+            <span id="finalScore" class="stat-val">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">PERSONAL BEST</span>
+            <span id="finalHighScore" class="stat-val" style="color: #ffd700;">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">WAVE</span>
+            <span id="finalWave" class="stat-val">1</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">KILLS</span>
+            <span id="finalKills" class="stat-val">0</span>
+          </div>
+        </div>
+
+        <div class="modal-actions" style="margin-top: 15px;">
+          <button id="restartBtn" class="arcade-btn">PLAY AGAIN</button>
+          <button id="gameOverQuitBtn" class="arcade-btn secondary-btn">QUIT TO MENU</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. How to Play (Directions Modal) -->
+    <div id="helpModal" class="modal-overlay hidden">
+      <div class="modal-box" style="max-width: 650px; text-align: left;">
+        <h2 class="game-title" style="font-size: 26px; text-align: center; margin-bottom: 12px;">HOW TO PLAY</h2>
+        
+        <div class="help-section">
+          <div class="help-heading">🎯 GOAL</div>
+          <p class="help-text">Survive endless waves of enemies in the arena using your <strong>5 Lives</strong>. Defeat enemies to score points and set your personal best!</p>
+        </div>
+
+        <div class="help-section">
+          <div class="help-heading">🎮 CONTROLS</div>
+          <div class="help-grid">
+            <div class="help-control-item"><span class="key-badge">A / D</span> or <span class="key-badge">◀ ▶</span> Move Left / Right</div>
+            <div class="help-control-item"><span class="key-badge">J</span> or <span class="key-badge">Space</span> Attack (Combo Flurry)</div>
+            <div class="help-control-item"><span class="key-badge">K</span> or <span class="key-badge">Shift</span> Dodge Roll (Invulnerable)</div>
+            <div class="help-control-item"><span class="key-badge">P</span> or <span class="key-badge">ESC</span> Pause / Quit Menu</div>
+          </div>
+        </div>
+
+        <div class="help-section">
+          <div class="help-heading">⚔️ 3-PHASE COMBO SYSTEM</div>
+          <p class="help-text">Tap Attack consecutively to unleash your full hero combination:</p>
+          <ul class="help-list">
+            <li><strong>Phase 1 (Hits 1-2):</strong> Quick forward slash (15 DMG)</li>
+            <li><strong>Phase 2 (Hits 3-4):</strong> Forward dash lunge burst (25 DMG)</li>
+            <li><strong>Phase 3 (Hits 5-6):</strong> Overhead jump to downward ground slam (40 DMG)</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <div class="help-heading">❤️ 5 LIVES & ⚡ STAMINA</div>
+          <p class="help-text">You start with 5 hearts. When your HP reaches 0, you lose 1 life and respawn with 1 second of shield invulnerability. Attacking costs blue Energy, which recharges automatically when resting.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button id="closeHelpBtn" class="arcade-btn">GOT IT, LET'S FIGHT!</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. On-screen Mobile Touch Controls -->
+    <div class="touch-controls">
+      <div class="touch-cluster">
+        <button id="touchLeft" class="touch-btn">◀</button>
+        <button id="touchRight" class="touch-btn">▶</button>
+      </div>
+      <div class="touch-cluster">
+        <button id="touchDodge" class="touch-btn">ROLL</button>
+        <button id="touchAttack" class="touch-btn touch-btn-action">ATK</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js?v=3"></script>
+</body>
+</html>

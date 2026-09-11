@@ -1,0 +1,101 @@
+[
+  {
+    "id": "seed-1",
+    "player_name": "VALKYRIE_99",
+    "score": 18450,
+    "wave": 14,
+    "kills": 86,
+    "difficulty": "hard",
+    "survival_time": 420.5,
+    "character": "female",
+    "created_at": "2026-09-08T18:30:00Z"
+  },
+  {
+    "id": "seed-2",
+    "player_name": "SHADOW_BLADE",
+    "score": 14200,
+    "wave": 11,
+    "kills": 64,
+    "difficulty": "medium",
+    "survival_time": 330.2,
+    "character": "female",
+    "created_at": "2026-09-08T20:15:00Z"
+  },
+  {
+    "id": "seed-3",
+    "player_name": "IRON_KNIGHT",
+    "score": 12850,
+    "wave": 10,
+    "kills": 58,
+    "difficulty": "hard",
+    "survival_time": 295.0,
+    "character": "male",
+    "created_at": "2026-09-09T02:10:00Z"
+  },
+  {
+    "id": "df16ca28-f31a-4eb7-9de7-8ec1cb6fc4bc",
+    "player_name": "GLADIATOR_X",
+    "score": 12500,
+    "wave": 9,
+    "kills": 52,
+    "difficulty": "hard",
+    "survival_time": 275.0,
+    "character": "female",
+    "created_at": "2026-09-10T05:48:16.502743+00:00"
+  },
+  {
+    "id": "seed-4",
+    "player_name": "GLADIATOR",
+    "score": 9600,
+    "wave": 8,
+    "kills": 42,
+    "difficulty": "medium",
+    "survival_time": 240.8,
+    "character": "male",
+    "created_at": "2026-09-09T08:45:00Z"
+  },
+  {
+    "id": "8deb5f49-b1dc-4234-a186-3f163f15b535",
+    "player_name": "TEST_HERO",
+    "score": 7500,
+    "wave": 6,
+    "kills": 35,
+    "difficulty": "medium",
+    "survival_time": 185.4,
+    "character": "female",
+    "created_at": "2026-09-10T05:47:53.376923+00:00"
+  },
+  {
+    "id": "5e28c337-f0d6-4842-afe0-f0cadc971db3",
+    "player_name": "TEST_HERO",
+    "score": 7500,
+    "wave": 6,
+    "kills": 35,
+    "difficulty": "medium",
+    "survival_time": 185.4,
+    "character": "female",
+    "created_at": "2026-09-10T05:50:59.764145+00:00"
+  },
+  {
+    "id": "seed-5",
+    "player_name": "ROOKIE_SLAYER",
+    "score": 5300,
+    "wave": 5,
+    "kills": 25,
+    "difficulty": "easy",
+    "survival_time": 180.0,
+    "character": "female",
+    "created_at": "2026-09-09T14:20:00Z"
+  },
+  {
+    "id": "a7235cb9-9c6f-47c3-b800-9f637c4df29a",
+    "player_name": "Such",
+    "score": 0,
+    "wave": 2,
+    "kills": 0,
+    "difficulty": "easy",
+    "survival_time": 42.9,
+    "character": "hero_female",
+    "created_at": "2026-09-10T05:56:01.224120+00:00"
+  }
+]
