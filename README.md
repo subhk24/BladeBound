@@ -3,16 +3,7 @@
 Endless 2D side-scrolling arcade survival combat game built with Vanilla JavaScript (ES6 Modules), HTML5 Canvas API, and FastAPI backend.
 
 ## Quick Start
-
-### 1. Run the Game
-From this folder (`/Users/subhdeepkaur/Documents/BladeBound`):
-```bash
-python3 -m pip install -r requirements.txt
-python3 -m uvicorn api.index:app --host 127.0.0.1 --port 8000
-```
-
-### 2. Open in Browser
-Visit **http://127.0.0.1:8000** in any modern web browser.
+https://subhk24.github.io/BladeBound/
 
 ---
 
